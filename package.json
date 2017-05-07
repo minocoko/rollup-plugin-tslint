@@ -12,7 +12,7 @@
     "report": "nyc report --reporter html",
     "build": "rollup -c",
     "pretest": "npm run build",
-    "unit": "nyc mocha",
+    "unit": "nyc mocha -t 10000",
     "test": "npm run unit && nyc report --reporter=text-lcov | coveralls",
     "prepublish": "npm test"
   },

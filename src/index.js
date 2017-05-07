@@ -37,7 +37,9 @@ export default function tslint(options = {}) {
 			const result = linter.getResult();
 
 			if (result.errorCount || result.warningCount) {
-				console.log(result.output);
+				if(result.output){
+					console.log(result.output);
+				}
 
 				if (options.throwError) {
 					throw Error('Warnings or errors were found');
