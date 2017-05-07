@@ -17,7 +17,6 @@
 [rollup-plugin-eslint]: https://github.com/TrySound/rollup-plugin-eslint
 
 [Rollup] plugin to verify entry point and all imported files with TSLint.
-influe
 
 
 ## Install
