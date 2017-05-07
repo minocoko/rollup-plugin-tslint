@@ -12,7 +12,8 @@
     "report": "nyc report --reporter html",
     "build": "rollup -c",
     "pretest": "npm run build",
-    "test": "nyc mocha",
+    "unit": "nyc mocha",
+    "test": "npm run unit && nyc report --reporter=text-lcov | coveralls",
     "prepublish": "npm test"
   },
   "repository": {
@@ -34,6 +35,9 @@
   "homepage": "https://github.com/minocoko/rollup-plugin-tslint#readme",
   "devDependencies": {
     "buble": "^0.15.2",
+    "coveralls": "^2.13.1",
+    "cross-env": "^4.0.0",
+    "install": "^0.10.0",
     "mocha": "^3.0.2",
     "nyc": "^8.1.0",
     "rollup": "^0.34.13",
