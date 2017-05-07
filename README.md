@@ -6,7 +6,7 @@
 [travis]: https://travis-ci.org/minocoko/rollup-plugin-tslint
 [rollup]: https://github.com/rollup/rollup
 [tslint-config]: https://palantir.github.io/tslint/usage/configuration
-[eslint]: https://github.com/TrySound/rollup-plugin-eslint
+[rollup-plugin-eslint]: https://github.com/TrySound/rollup-plugin-eslint
 
 [Rollup] plugin to verify entry point and all imported files with TSLint.
 influe
@@ -72,4 +72,4 @@ Custom error formatter or the name of a built-in formatter.
 MIT © [Minocoko](mailto:minocok@outlook.com)
 
 # Acknowledges
-Initially this plugin were influenced by [eslint], thanks a lot.
+Initially this plugin were influenced by [rollup-plugin-eslint], thanks a lot.
