@@ -47,7 +47,7 @@ describe('rollup-plugin-tslint', () => {
 	it('should ignore node_modules with exclude option', () => {
 		return rollup({
 			entry: 'fixtures/modules.ts',
-			external: ['path', 'minimatch', 'estree-walker'],
+			external: ['path', 'fs'],
 			plugins: [
 				nodeResolve({ jsnext: true }),
 				commonjs(),
@@ -63,15 +63,7 @@ describe('rollup-plugin-tslint', () => {
 			entry: 'fixtures/indent.ts',
 			plugins: [
 				tslint({
-					throwError: true,
-					formatter: (function() {
-						class Formatter extends Linter.Formatters.AbstractFormatter {
-							format(failures) {
-							}
-						}
-
-						return Formatter
-					})()
+					throwError: true
 				})
 			]
 		}).then(() => {
