@@ -1,0 +1,48 @@
+{
+  "name": "rollup-plugin-tslint",
+  "version": "3.0.0",
+  "description": "Verify entry point and all imported files with TSLint",
+  "main": "dist/rollup-plugin-tslint.cjs.js",
+  "module": "dist/rollup-plugin-tslint.es.js",
+  "jsnext:main": "dist/rollup-plugin-tslint.es.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "report": "nyc report --reporter html",
+    "build": "rollup -c",
+    "pretest": "npm run build",
+    "test": "nyc mocha",
+    "prepublish": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minocoko/rollup-plugin-tslint.git"
+  },
+  "keywords": [
+    "rollup",
+    "rollup-plugin",
+    "typscript",
+    "tslint",
+    "lint"
+  ],
+  "author": "Minocoko <minocok@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/minocoko/rollup-plugin-tslint/issues"
+  },
+  "homepage": "https://github.com/minocoko/rollup-plugin-tslint#readme",
+  "devDependencies": {
+    "buble": "^0.15.2",
+    "mocha": "^3.0.2",
+    "nyc": "^8.1.0",
+    "rollup": "^0.34.13",
+    "rollup-plugin-buble": "^0.15.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "typescript": "^2.3.2"
+  },
+  "dependencies": {
+    "rollup-pluginutils": "^1.3.1",
+    "tslint": "^5.2.0"
+  }
+}
