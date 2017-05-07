@@ -4,6 +4,7 @@
 [![Coverage][coveralls-img]][coveralls]
 [![Downloads][rollup-plugin-tslint-dt-img]][rollup-plugin-tslint-pkg]
 [![Version][rollup-plugin-tslint-v-img]][rollup-plugin-tslint-pkg]
+[![Dependency][dependency-img]][dependency]
 
 [travis-img]: https://travis-ci.org/minocoko/rollup-plugin-tslint.svg
 [travis]: https://travis-ci.org/minocoko/rollup-plugin-tslint
@@ -12,6 +13,8 @@
 [rollup-plugin-tslint-pkg]: https://www.npmjs.com/package/rollup-plugin-tslint
 [rollup-plugin-tslint-dt-img]: https://img.shields.io/npm/dt/rollup-plugin-tslint.svg
 [rollup-plugin-tslint-v-img]: https://img.shields.io/npm/v/rollup-plugin-tslint.svg
+[dependency-img]: https://david-dm.org/minocoko/rollup-plugin-tslint.svg
+[dependency]: https://david-dm.org/minocoko/rollup-plugin-tslint
 [rollup]: https://github.com/rollup/rollup
 [tslint-config]: https://palantir.github.io/tslint/usage/configuration
 [rollup-plugin-eslint]: https://github.com/TrySound/rollup-plugin-eslint
