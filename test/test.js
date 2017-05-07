@@ -46,9 +46,7 @@ describe('rollup-plugin-tslint', () => {
 	it('should ignore node_modules with exclude option', () => {
 		return rollup({
 			entry: 'fixtures/modules.ts',
-			external: ['path', 'minimatch', 'estree-walker'],
 			plugins: [
-				nodeResolve({ jsnext: true }),
 				tslint({
 					exclude: '../node_modules/**'
 				})
