@@ -2,8 +2,8 @@
 
 [![Travis Build Status][travis-img]][travis]
 
-[travis-img]: https://travis-ci.org/minocok/rollup-plugin-tslint.svg
-[travis]: https://travis-ci.org/minocok/rollup-plugin-tslint
+[travis-img]: https://travis-ci.org/minocoko/rollup-plugin-tslint.svg
+[travis]: https://travis-ci.org/minocoko/rollup-plugin-tslint
 [rollup]: https://github.com/rollup/rollup
 [tslint-config]: https://palantir.github.io/tslint/usage/configuration
 [eslint]: https://github.com/TrySound/rollup-plugin-eslint
