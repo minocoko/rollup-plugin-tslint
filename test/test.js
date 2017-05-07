@@ -3,6 +3,7 @@ const { rollup } = require('rollup');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const tslint = require('../');
 const Linter = require("tslint");
+const commonjs = require('rollup-plugin-commonjs');
 
 process.chdir('test');
 
@@ -46,7 +47,10 @@ describe('rollup-plugin-tslint', () => {
 	it('should ignore node_modules with exclude option', () => {
 		return rollup({
 			entry: 'fixtures/modules.ts',
+			external: ['path', 'minimatch', 'estree-walker'],
 			plugins: [
+				nodeResolve({ jsnext: true }),
+				commonjs(),
 				tslint({
 					exclude: '../node_modules/**'
 				})
