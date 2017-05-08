@@ -9,8 +9,8 @@
 
 [travis-img]: https://travis-ci.org/minocoko/rollup-plugin-tslint.svg
 [travis]: https://travis-ci.org/minocoko/rollup-plugin-tslint
-[coveralls-img]: https://coveralls.io/repos/github/minocoko/rollup-plugin-tslint/badge.svg?branch=master
-[coveralls]: https://coveralls.io/github/minocoko/rollup-plugin-tslint?branch=master
+[coveralls-img]: https://coveralls.io/repos/github/minocoko/rollup-plugin-tslint/badge.svg
+[coveralls]: https://coveralls.io/github/minocoko/rollup-plugin-tslint
 [rollup-plugin-tslint-pkg]: https://www.npmjs.com/package/rollup-plugin-tslint
 [rollup-plugin-tslint-dt-img]: https://img.shields.io/npm/dt/rollup-plugin-tslint.svg
 [rollup-plugin-tslint-v-img]: https://img.shields.io/npm/v/rollup-plugin-tslint.svg
