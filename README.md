@@ -2,7 +2,7 @@
 
 [![Build][travis-img]][travis]
 [![Coverage][coveralls-img]][coveralls]
-[![Codacy][Codacy-img]][Codacy]
+[![JavaScript Style Guide][standard-img]][standard]
 [![Downloads][rollup-plugin-tslint-dt-img]][rollup-plugin-tslint-pkg]
 [![Version][rollup-plugin-tslint-v-img]][rollup-plugin-tslint-pkg]
 [![Dependency][dependency-img]][dependency]
@@ -12,8 +12,8 @@
 [travis]: https://travis-ci.org/minocoko/rollup-plugin-tslint
 [coveralls-img]: https://coveralls.io/repos/github/minocoko/rollup-plugin-tslint/badge.svg
 [coveralls]: https://coveralls.io/github/minocoko/rollup-plugin-tslint
-[Codacy-img]: https://api.codacy.com/project/badge/Grade/e776844e05f64d56b435c688f224a379
-[Codacy]: https://www.codacy.com/app/minocoko/rollup-plugin-tslint
+[standard-img]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
+[standard]: https://standardjs.com
 [rollup-plugin-tslint-pkg]: https://www.npmjs.com/package/rollup-plugin-tslint
 [rollup-plugin-tslint-dt-img]: https://img.shields.io/npm/dt/rollup-plugin-tslint.svg
 [rollup-plugin-tslint-v-img]: https://img.shields.io/npm/v/rollup-plugin-tslint.svg
