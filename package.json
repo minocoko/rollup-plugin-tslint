@@ -28,7 +28,7 @@
     "tslint",
     "lint"
   ],
-  "author": "Minocoko <minocok@outlook.com>",
+  "author": "Minocoko <minocoko@outlook.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/minocoko/rollup-plugin-tslint/issues"

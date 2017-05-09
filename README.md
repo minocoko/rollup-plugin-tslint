@@ -84,7 +84,7 @@ Custom error formatter or the name of a built-in formatter.
 
 # License
 
-MIT © [Minocoko](mailto:minocok@outlook.com)
+MIT © [Minocoko](mailto:minocoko@outlook.com)
 
 # Acknowledges
 Initially this plugin were influenced by [rollup-plugin-eslint], thanks a lot.
