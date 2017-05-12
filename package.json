@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-tslint",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Verify entry point and all imported files with TSLint",
   "main": "dist/rollup-plugin-tslint.cjs.js",
   "module": "dist/rollup-plugin-tslint.es.js",
@@ -37,7 +37,7 @@
   "devDependencies": {
     "buble": "^0.15.2",
     "coveralls": "^2.13.1",
-    "cross-env": "^4.0.0",
+    "cross-env": "^5.0.0",
     "install": "^0.10.0",
     "mocha": "^3.0.2",
     "nyc": "^10.3.2",
