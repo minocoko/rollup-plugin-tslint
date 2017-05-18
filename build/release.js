@@ -16,7 +16,7 @@ if (!shell.which('git')) {
     console.log('update version')
 
     // add release tag
-    shell.exec(`git tag -a v${ver} -m "release v${ver}"`)
+    shell.exec(`git tag -a v${ver} -m "release v${ver}" && git push origin v${ver}`)
     console.log('add release tag')
 
     // push to git
