@@ -1,60 +1,62 @@
 {
-  "name": "rollup-plugin-tslint",
-  "version": "0.1.9",
-  "description": "Verify entry point and all imported files with TSLint",
-  "main": "dist/rollup-plugin-tslint.cjs.js",
-  "module": "dist/rollup-plugin-tslint.es.js",
-  "jsnext:main": "dist/rollup-plugin-tslint.es.js",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "report": "nyc report --reporter html",
-    "build": "rollup -c",
-    "pretest": "npm run build",
-    "unit": "nyc mocha -t 10000",
-    "standard": "standard --fix",
-    "test": "standard && npm run unit && nyc report --reporter=text-lcov | coveralls",
-    "prepublish": "npm test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/minocoko/rollup-plugin-tslint.git"
-  },
-  "keywords": [
-    "rollup",
-    "rollup-plugin",
-    "typscript",
-    "tslint",
-    "lint"
-  ],
-  "author": "Minocoko <minocoko@outlook.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/minocoko/rollup-plugin-tslint/issues"
-  },
-  "homepage": "https://github.com/minocoko/rollup-plugin-tslint#readme",
-  "devDependencies": {
-    "buble": "^0.15.2",
-    "coveralls": "^2.13.1",
-    "cross-env": "^5.0.0",
-    "mocha": "^3.0.2",
-    "npm-auto-version": "^1.0.0",
-    "nyc": "^10.3.2",
-    "rollup": "^0.41.6",
-    "rollup-plugin-buble": "^0.15.0",
-    "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "standard": "^10.0.2",
-    "typescript": "^2.3.2"
-  },
-  "dependencies": {
-    "rollup-pluginutils": "^2.0.1",
-    "tslint": "^5.2.0"
-  },
-  "standard": {
-    "ignore": [
-      "test"
-    ]
-  }
+	"name": "rollup-plugin-tslint",
+	"version": "1.0.0",
+	"description": "Verify entry point and all imported files with TSLint",
+	"main": "dist/rollup-plugin-tslint.cjs.js",
+	"module": "dist/rollup-plugin-tslint.es.js",
+	"jsnext:main": "dist/rollup-plugin-tslint.es.js",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"report": "nyc report --reporter html",
+		"build": "rollup -c",
+		"pretest": "npm run build",
+		"unit": "nyc mocha -t 10000",
+		"standard": "standard --fix",
+		"test": "standard && npm run unit && nyc report --reporter=text-lcov | coveralls",
+		"prepublish": "npm test",
+		"release": "node build/release"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/minocoko/rollup-plugin-tslint.git"
+	},
+	"keywords": [
+		"rollup",
+		"rollup-plugin",
+		"typscript",
+		"tslint",
+		"lint"
+	],
+	"author": "Minocoko <minocoko@outlook.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/minocoko/rollup-plugin-tslint/issues"
+	},
+	"homepage": "https://github.com/minocoko/rollup-plugin-tslint#readme",
+	"devDependencies": {
+		"buble": "^0.15.2",
+		"coveralls": "^2.13.1",
+		"cross-env": "^5.0.0",
+		"mocha": "^3.0.2",
+		"npm-auto-version": "^1.0.0",
+		"nyc": "^10.3.2",
+		"rollup": "^0.41.6",
+		"rollup-plugin-buble": "^0.15.0",
+		"rollup-plugin-commonjs": "^8.0.2",
+		"rollup-plugin-node-resolve": "^3.0.0",
+		"semver": "^5.3.0",
+		"standard": "^10.0.2",
+		"typescript": "^2.3.2"
+	},
+	"dependencies": {
+		"rollup-pluginutils": "^2.0.1",
+		"tslint": "^5.2.0"
+	},
+	"standard": {
+		"ignore": [
+			"test"
+		]
+	}
 }
