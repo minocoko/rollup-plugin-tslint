@@ -7,7 +7,7 @@ export default {
   plugins: [
     buble()
   ],
-  external: Object.keys(pkg.dependencies).concat(['path']),
+  external: Object.keys(pkg.dependencies).concat(['path', 'fs']),
   sourceMap: 'inline',
   targets: [
     {

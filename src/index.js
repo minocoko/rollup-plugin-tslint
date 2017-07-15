@@ -1,5 +1,6 @@
 import path from 'path'
 import fs from 'fs'
+import ts from 'typescript'
 import { createFilter } from 'rollup-pluginutils'
 import { Linter } from 'tslint'
 
@@ -19,8 +20,10 @@ export default function tslint (options = {}) {
   // rulesDirectory: null,
   // formattersDirectory: "customFormatters/"
 
-  const linter = new Linter(options)
-  const configuration = Linter.loadConfigurationFromPath(Linter.findConfigurationPath())
+  const tsConfigSearchPath = options.tsConfigSearchPath || process.cwd()
+  const tsConfigFile = ts.findConfigFile(tsConfigSearchPath, ts.sys.fileExists)
+  const program = Linter.createProgram(tsConfigFile)
+  const linter = new Linter(options, program)
 
   return {
     name: 'tslint',
@@ -32,7 +35,9 @@ export default function tslint (options = {}) {
         return null
       }
 
+      const configuration = Linter.loadConfigurationFromPath(Linter.findConfigurationPath(null, fileName))
       const fileContents = fs.readFileSync(fileName, 'utf8')
+
       linter.lint(id, fileContents, configuration)
       const result = linter.getResult()
 
