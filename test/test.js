@@ -4,35 +4,23 @@ const nodeResolve = require('rollup-plugin-node-resolve');
 const tslint = require('../');
 const Linter = require("tslint");
 const commonjs = require('rollup-plugin-commonjs');
+const { createFormatter } = require('./util/formatter');
 
 process.chdir('test');
 
+
 describe('rollup-plugin-tslint', () => {
 	it('space indentation expected (indent)', () => {
-		let count = 0;
-		let failure, ruleName;
+		let result = {};
 		return rollup({
 			entry: 'fixtures/indent.ts',
 			plugins: [
-				tslint({
-					formatter: (function() {
-						class Formatter extends Linter.Formatters.AbstractFormatter {
-							format(failures) {
-								count = failures.length;
-								failure = failures[0] && failures[0].failure;
-								ruleName = failures[0] && failures[0].ruleName;
-								return '';
-							}
-						}
-
-						return Formatter
-					})()
-				})
+				tslint({ formatter: createFormatter(result) })
 			]
 		}).then(() => {
-			assert.equal(count, 1);
-			assert.equal(failure, 'space indentation expected');
-			assert.equal(ruleName, 'indent');
+			assert.equal(result.count, 1);
+			assert.equal(result.failure, 'space indentation expected');
+			assert.equal(result.ruleName, 'indent');
 		});
 	});
 
@@ -65,15 +53,7 @@ describe('rollup-plugin-tslint', () => {
 			plugins: [
 				tslint({
 					throwError: true,
-					formatter: (function() {
-						class Formatter extends Linter.Formatters.AbstractFormatter {
-							format(failures) {
-								return '';
-							}
-						}
-
-						return Formatter
-					})()
+					formatter: createFormatter()
 				})
 			]
 		}).then(() => {
@@ -84,30 +64,16 @@ describe('rollup-plugin-tslint', () => {
 	});
 
 	it('should detect the violation with the type checker', () => {
-		let count = 0;
-		let failure, ruleName;
+		let result = {};
 		return rollup({
 			entry: 'fixtures/typechecking.ts',
 			plugins: [
-				tslint({
-					formatter: (function() {
-						class Formatter extends Linter.Formatters.AbstractFormatter {
-							format(failures) {
-								count = failures.length;
-								failure = failures[0] && failures[0].failure;
-								ruleName = failures[0] && failures[0].ruleName;
-								return '';
-							}
-						}
-
-						return Formatter
-					})()
-				})
+				tslint({ formatter: createFormatter(result) })
 			]
 		}).then(() => {
-			assert.equal(count, 1);
-			assert.equal(failure, 'Operands of \'+\' operation must either be both strings or both numbers');
-			assert.equal(ruleName, 'restrict-plus-operands');
+			assert.equal(result.count, 1);
+			assert.equal(result.failure, 'Operands of \'+\' operation must either be both strings or both numbers');
+			assert.equal(result.ruleName, 'restrict-plus-operands');
 		});
 	});
 });
