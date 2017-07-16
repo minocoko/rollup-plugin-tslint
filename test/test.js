@@ -4,34 +4,23 @@ const nodeResolve = require('rollup-plugin-node-resolve');
 const tslint = require('../');
 const Linter = require("tslint");
 const commonjs = require('rollup-plugin-commonjs');
+const { createFormatter } = require('./util/formatter');
 
 process.chdir('test');
 
+
 describe('rollup-plugin-tslint', () => {
 	it('space indentation expected (indent)', () => {
-		let count = 0;
-		let failure, ruleName;
+		let result = {};
 		return rollup({
 			entry: 'fixtures/indent.ts',
 			plugins: [
-				tslint({
-					formatter: (function() {
-						class Formatter extends Linter.Formatters.AbstractFormatter {
-							format(failures) {
-								count = failures.length;
-								failure = failures[0].failure;
-								ruleName = failures[0].ruleName;
-							}
-						}
-
-						return Formatter
-					})()
-				})
+				tslint({ formatter: createFormatter(result) })
 			]
 		}).then(() => {
-			assert.equal(count, 1);
-			assert.equal(failure, 'space indentation expected');
-			assert.equal(ruleName, 'indent');
+			assert.equal(result.count, 1);
+			assert.equal(result.failure, 'space indentation expected');
+			assert.equal(result.ruleName, 'indent');
 		});
 	});
 
@@ -63,13 +52,28 @@ describe('rollup-plugin-tslint', () => {
 			entry: 'fixtures/indent.ts',
 			plugins: [
 				tslint({
-					throwError: true
+					throwError: true,
+					formatter: createFormatter()
 				})
 			]
 		}).then(() => {
 			assert.fail('should throw error');
 		}).catch(err => {
 			assert.notEqual(err.toString().indexOf('Warnings or errors were found'), -1);
+		});
+	});
+
+	it('should detect the violation with the type checker', () => {
+		let result = {};
+		return rollup({
+			entry: 'fixtures/typechecking.ts',
+			plugins: [
+				tslint({ formatter: createFormatter(result) })
+			]
+		}).then(() => {
+			assert.equal(result.count, 1);
+			assert.equal(result.failure, 'Operands of \'+\' operation must either be both strings or both numbers');
+			assert.equal(result.ruleName, 'restrict-plus-operands');
 		});
 	});
 });

@@ -1,6 +1,6 @@
 {
 	"name": "rollup-plugin-tslint",
-	"version": "0.1.22",
+	"version": "0.2.0",
 	"description": "Verify entry point and all imported files with TSLint",
 	"main": "dist/rollup-plugin-tslint.cjs.js",
 	"module": "dist/rollup-plugin-tslint.es.js",
@@ -16,7 +16,8 @@
 		"standard": "standard --fix",
 		"test": "standard && npm run unit && nyc report --reporter=text-lcov | coveralls",
 		"prepublish": "npm test",
-		"release": "node build/release"
+		"release": "node build/release",
+		"prepare": "npm run build"
 	},
 	"repository": {
 		"type": "git",
@@ -48,12 +49,12 @@
 		"rollup-plugin-node-resolve": "^3.0.0",
 		"semver": "^5.3.0",
 		"shelljs": "^0.7.7",
-		"standard": "^10.0.2",
-		"typescript": "^2.3.2"
+		"standard": "^10.0.2"
 	},
 	"dependencies": {
 		"rollup-pluginutils": "^2.0.1",
-		"tslint": "^5.2.0"
+		"tslint": "^5.5.0",
+		"typescript": "^2.3.2"
 	},
 	"standard": {
 		"ignore": [
