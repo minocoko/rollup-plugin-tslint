@@ -1,6 +1,6 @@
 {
 	"name": "rollup-plugin-tslint",
-	"version": "0.1.23",
+	"version": "0.1.22",
 	"description": "Verify entry point and all imported files with TSLint",
 	"main": "dist/rollup-plugin-tslint.cjs.js",
 	"module": "dist/rollup-plugin-tslint.es.js",
