@@ -2,10 +2,14 @@ import path from 'path'
 import fs from 'fs'
 import ts from 'typescript'
 import { createFilter } from 'rollup-pluginutils'
-import { Linter } from 'tslint'
+import { Linter, Configuration } from 'tslint'
 
 function normalizePath (id) {
   return path.relative(process.cwd(), id).split(path.sep).join('/')
+}
+
+function isString (value) {
+  return Object.prototype.toString.call(value) === '[object String]'
 }
 
 export default function tslint (options = {}) {
@@ -14,8 +18,6 @@ export default function tslint (options = {}) {
     options.exclude || 'node_modules/**'
   )
 
-  options.formatter = options.formatter || 'stylish'
-
   // formatter: "stylish"
   // rulesDirectory: null,
   // formattersDirectory: "customFormatters/"
@@ -23,7 +25,15 @@ export default function tslint (options = {}) {
   const tsConfigSearchPath = options.tsConfigSearchPath || process.cwd()
   const tsConfigFile = ts.findConfigFile(tsConfigSearchPath, ts.sys.fileExists)
   const program = Linter.createProgram(tsConfigFile)
-  const linter = new Linter(options, program)
+
+  const config = {
+    fix: options.fix || false,
+    formatter: options.formatter || 'stylish',
+    formattersDirectory: options.formattersDirectory || null,
+    rulesDirectory: options.rulesDirectory || null
+  }
+
+  const linter = new Linter(config, program)
 
   return {
     name: 'tslint',
@@ -35,7 +45,12 @@ export default function tslint (options = {}) {
         return null
       }
 
-      const configuration = Linter.loadConfigurationFromPath(Linter.findConfigurationPath(null, fileName))
+      const configuration = (options.configuration === null ||
+        options.configuration === undefined ||
+        isString(options.configuration))
+        ? Configuration.findConfiguration(options.configuration || null, fileName).results
+        : options.configuration
+
       const fileContents = fs.readFileSync(fileName, 'utf8')
 
       linter.lint(id, fileContents, configuration)
