@@ -49,7 +49,7 @@ export default function tslint (options = {}) {
         options.configuration === undefined ||
         isString(options.configuration))
         ? Configuration.findConfiguration(options.configuration || null, fileName).results
-        : options.configuration
+        : Configuration.parseConfigFile(options.configuration, process.cwd())
 
       const fileContents = fs.readFileSync(fileName, 'utf8')
 

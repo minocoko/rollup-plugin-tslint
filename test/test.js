@@ -76,4 +76,41 @@ describe('rollup-plugin-tslint', () => {
 			assert.equal(result.ruleName, 'restrict-plus-operands');
 		});
 	});
+
+	it('should be able to take an alternative configuration file', () => {
+		let result = {};
+		return rollup({
+			entry: 'fixtures/typechecking.ts',
+			plugins: [
+				tslint({ formatter: createFormatter(result), configuration: "alternative-tsconfig.json" })
+			]
+		}).then(() => {
+			assert.equal(result.count, 1);
+			assert.equal(result.failure, 'tab indentation expected');
+			assert.equal(result.ruleName, 'indent');
+		});
+	});
+
+	it('should be able to take an inline configuration', () => {
+		let result = {};
+		return rollup({
+			entry: 'fixtures/typechecking.ts',
+			plugins: [
+				tslint({ 
+					formatter: createFormatter(result), 
+					configuration: {
+						rules: {
+							indent: {
+								options: ["tabs"]
+							}   
+						}
+					} 
+				})
+			]
+		}).then(() => {
+			assert.equal(result.count, 1);
+			assert.equal(result.failure, 'tab indentation expected');
+			assert.equal(result.ruleName, 'indent');
+		});
+	});
 });
