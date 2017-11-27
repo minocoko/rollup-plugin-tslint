@@ -81,6 +81,13 @@ Default: `stylish`
 
 Custom error formatter or the name of a built-in formatter.
 
+### configuration
+
+Type: `object` or `string`
+Default: `null`
+
+Full configuration can be provided either as a path to a `tsconfig.json` or a configuration object.
+
 
 # License
 
