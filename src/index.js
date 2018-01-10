@@ -13,6 +13,8 @@ function isString (value) {
 }
 
 export default function tslint (options = {}) {
+  let linter;
+
   const filter = createFilter(
     options.include,
     options.exclude || 'node_modules/**'
@@ -24,7 +26,6 @@ export default function tslint (options = {}) {
 
   const tsConfigSearchPath = options.tsConfigSearchPath || process.cwd()
   const tsConfigFile = ts.findConfigFile(tsConfigSearchPath, ts.sys.fileExists)
-  const program = Linter.createProgram(tsConfigFile)
 
   const config = {
     fix: options.fix || false,
@@ -33,11 +34,15 @@ export default function tslint (options = {}) {
     rulesDirectory: options.rulesDirectory || null
   }
 
-  const linter = new Linter(config, program)
-
   return {
     name: 'tslint',
     sourceMap: false,
+
+    options() {
+      const program = Linter.createProgram(tsConfigFile)
+
+      linter = new Linter(config, program)
+    },
 
     transform (code, id) {
       const fileName = normalizePath(id)
@@ -51,10 +56,12 @@ export default function tslint (options = {}) {
         ? Configuration.findConfiguration(options.configuration || null, fileName).results
         : Configuration.parseConfigFile(options.configuration, process.cwd())
 
-      const fileContents = fs.readFileSync(fileName, 'utf8')
-
-      linter.lint(id, fileContents, configuration)
+      linter.lint(id, code, configuration)
       const result = linter.getResult()
+
+      // Clear all results for current file from tslint
+      linter.failures = [];
+      linter.fixes = [];
 
       if (result.errorCount || result.warningCount) {
         console.log(result.output)
