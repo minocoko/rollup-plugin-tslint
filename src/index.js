@@ -1,5 +1,4 @@
 import path from 'path'
-import fs from 'fs'
 import ts from 'typescript'
 import { createFilter } from 'rollup-pluginutils'
 import { Linter, Configuration } from 'tslint'
@@ -13,7 +12,7 @@ function isString (value) {
 }
 
 export default function tslint (options = {}) {
-  let linter;
+  let linter
 
   const filter = createFilter(
     options.include,
@@ -38,7 +37,7 @@ export default function tslint (options = {}) {
     name: 'tslint',
     sourceMap: false,
 
-    options() {
+    options () {
       const program = Linter.createProgram(tsConfigFile)
 
       linter = new Linter(config, program)
@@ -60,8 +59,8 @@ export default function tslint (options = {}) {
       const result = linter.getResult()
 
       // Clear all results for current file from tslint
-      linter.failures = [];
-      linter.fixes = [];
+      linter.failures = []
+      linter.fixes = []
 
       if (result.errorCount || result.warningCount) {
         console.log(result.output)
