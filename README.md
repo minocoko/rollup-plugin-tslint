@@ -60,6 +60,13 @@ Default: `false`
 
 If true, will throw an error if any warnings or errors were found.
 
+### allowWarnings
+
+Type: `boolean`  
+Default: `false`
+
+If true, warnings won't throw an error
+
 ### include
 
 Type: `array` or `string`  

@@ -66,7 +66,9 @@ export default function tslint (options = {}) {
         console.log(result.output)
 
         if (options.throwError) {
-          throw Error('Warnings or errors were found')
+          if(result.errorCount || !result.errorCount && result.warningCount && !options.allowWarnings) {
+            throw Error('Warnings or errors were found')
+          }
         }
       }
     }
