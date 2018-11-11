@@ -2,12 +2,10 @@ const assert = require('assert');
 const { rollup } = require('rollup');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const tslint = require('../');
-const Linter = require("tslint");
 const commonjs = require('rollup-plugin-commonjs');
 const { createFormatter } = require('./util/formatter');
 
 process.chdir('test');
-
 
 describe('rollup-plugin-tslint', () => {
 	it('space indentation expected (indent)', () => {
@@ -47,22 +45,23 @@ describe('rollup-plugin-tslint', () => {
 		});
 	});
 
-	it('should fail with enabled throwError option', () => {
+	it('should fail with enabled throwOnError option', () => {
 		return rollup({
 			entry: 'fixtures/indent.ts',
 			plugins: [
 				tslint({
-					throwError: true,
+					throwOnError: true,
 					formatter: createFormatter()
 				})
 			]
 		}).then(() => {
 			assert.fail('should throw error');
 		}).catch(err => {
-			assert.notEqual(err.toString().indexOf('Warnings or errors were found'), -1);
+			console.error(err);
+			assert.notEqual(err.toString().indexOf('Errors were found'), -1);
 		});
 	});
-
+	
 	it('should detect the violation with the type checker', () => {
 		let result = {};
 		return rollup({
