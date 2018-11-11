@@ -30,6 +30,12 @@
 ## Install
 
 ```sh
+yarn add rollup-plugin-tslint -D
+```
+
+or 
+
+```sh
 npm i rollup-plugin-tslint -D
 ```
 
@@ -53,12 +59,19 @@ rollup({
 
 See more options here [tslint-config].
 
-### throwError
+### throwOnError
 
 Type: `boolean`  
 Default: `false`
 
-If true, will throw an error if any warnings or errors were found.
+If true, will throw an error if any errors were found.
+
+### throwOnWarning
+
+Type: `boolean`  
+Default: `false`
+
+If true, will throw an error if any warnings were found.
 
 ### include
 

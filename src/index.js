@@ -4,7 +4,10 @@ import { createFilter } from 'rollup-pluginutils'
 import { Linter, Configuration } from 'tslint'
 
 function normalizePath (id) {
-  return path.relative(process.cwd(), id).split(path.sep).join('/')
+  return path
+    .relative(process.cwd(), id)
+    .split(path.sep)
+    .join('/')
 }
 
 function isString (value) {
@@ -49,11 +52,15 @@ export default function tslint (options = {}) {
         return null
       }
 
-      const configuration = (options.configuration === null ||
+      const configuration =
+        options.configuration === null ||
         options.configuration === undefined ||
-        isString(options.configuration))
-        ? Configuration.findConfiguration(options.configuration || null, fileName).results
-        : Configuration.parseConfigFile(options.configuration, process.cwd())
+        isString(options.configuration)
+          ? Configuration.findConfiguration(
+              options.configuration || null,
+              fileName
+            ).results
+          : Configuration.parseConfigFile(options.configuration, process.cwd())
 
       linter.lint(id, code, configuration)
       const result = linter.getResult()
@@ -62,12 +69,23 @@ export default function tslint (options = {}) {
       linter.failures = []
       linter.fixes = []
 
-      if (result.errorCount || result.warningCount) {
-        console.log(result.output)
+      const hasWarnings = options.throwOnWarning && result.warningCount !== 0
+      const hasErrors = (options.throwOnError || options.throwError) && result.errorCount !== 0
 
-        if (options.throwError) {
-          throw Error('Warnings or errors were found')
-        }
+      if (result) {
+        console.log(result)
+      }
+
+      if (hasWarnings && hasErrors) {
+        throw Error('Warnings or errors were found')
+      }
+
+      if (hasWarnings) {
+        throw Error('Warnings were found')
+      }
+
+      if (hasErrors) {
+        throw Error('Errors were found')
       }
     }
   }
