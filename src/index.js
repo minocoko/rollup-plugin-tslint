@@ -72,8 +72,8 @@ export default function tslint (options = {}) {
       const hasWarnings = options.throwOnWarning && result.warningCount !== 0
       const hasErrors = (options.throwOnError || options.throwError) && result.errorCount !== 0
 
-      if (result) {
-        console.log(result)
+      if (result.errorCount || result.warningCount) {
+        console.log(result.output)
       }
 
       if (hasWarnings && hasErrors) {
