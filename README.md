@@ -43,15 +43,21 @@ npm i rollup-plugin-tslint -D
 ## Usage
 
 ```js
-import { rollup } from 'rollup';
-import tslint from 'rollup-plugin-tslint';
+import typescript from 'rollup-plugin-typescript';
+import tslint from "rollup-plugin-tslint";
 
-rollup({
-    entry: 'main.js',
-    plugins: [
-        tslint({ /* your options */ })
-    ]
-});
+export default {
+  input: "src/index.ts",
+  output: {
+    file: "dist/main.js",
+    format: "cjs"
+  },
+  plugins: [
+    tslint({}),
+    typescript({ })
+  ]
+};
+
 ```
 
 
