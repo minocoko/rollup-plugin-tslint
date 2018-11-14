@@ -57,9 +57,9 @@ export default function tslint (options = {}) {
         options.configuration === undefined ||
         isString(options.configuration)
           ? Configuration.findConfiguration(
-              options.configuration || null,
-              fileName
-            ).results
+            options.configuration || null,
+            fileName
+          ).results
           : Configuration.parseConfigFile(options.configuration, process.cwd())
 
       linter.lint(id, code, configuration)
