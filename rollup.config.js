@@ -7,16 +7,17 @@ export default {
   output: [
     {
       format: 'cjs',
-      dest: pkg['main']
+      file: pkg['main'],
+      sourcemap: true
     },
     {
       format: 'es',
-      dest: pkg['module']
+      file: pkg['module'],
+      sourcemap: true
     }
   ],
   plugins: [
     buble()
   ],
-  external: Object.keys(pkg.dependencies).concat(['path', 'fs']),
-  sourceMap: 'inline'
+  external: Object.keys(pkg.dependencies).concat(['path', 'fs'])
 }
