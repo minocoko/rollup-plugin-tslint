@@ -21,10 +21,11 @@
 [dependency-img]: https://david-dm.org/minocoko/rollup-plugin-tslint/status.svg
 [devDependency-img]: https://david-dm.org/minocoko/rollup-plugin-tslint/dev-status.svg
 [rollup]: https://github.com/rollup/rollup
+[TSLint]:https://github.com/palantir/tslint
 [tslint-config]: https://palantir.github.io/tslint/usage/configuration
 [rollup-plugin-eslint]: https://github.com/TrySound/rollup-plugin-eslint
 
-[Rollup] plugin to verify entry point and all imported files with TSLint.
+[Rollup] plugin to verify entry point and all imported files with [TSLint].
 
 
 ## Install
