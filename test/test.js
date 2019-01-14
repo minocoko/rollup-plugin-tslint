@@ -11,7 +11,7 @@ describe('rollup-plugin-tslint', () => {
 	it('space indentation expected (indent)', () => {
 		let result = {};
 		return rollup({
-			entry: 'fixtures/indent.ts',
+			input: 'fixtures/indent.ts',
 			plugins: [
 				tslint({ formatter: createFormatter(result) })
 			]
@@ -24,7 +24,7 @@ describe('rollup-plugin-tslint', () => {
 
 	it('should not fail with default options', () => {
 		return rollup({
-			entry: 'fixtures/success.ts',
+			input: 'fixtures/success.ts',
 			plugins: [
 				tslint()
 			]
@@ -33,7 +33,7 @@ describe('rollup-plugin-tslint', () => {
 
 	it('should ignore node_modules with exclude option', () => {
 		return rollup({
-			entry: 'fixtures/modules.ts',
+			input: 'fixtures/modules.ts',
 			external: ['path', 'fs'],
 			plugins: [
 				nodeResolve({ jsnext: true }),
@@ -47,7 +47,7 @@ describe('rollup-plugin-tslint', () => {
 
 	it('should fail with enabled throwOnError option', () => {
 		return rollup({
-			entry: 'fixtures/indent.ts',
+			input: 'fixtures/indent.ts',
 			plugins: [
 				tslint({
 					throwOnError: true,
@@ -65,7 +65,7 @@ describe('rollup-plugin-tslint', () => {
 	it('should detect the violation with the type checker', () => {
 		let result = {};
 		return rollup({
-			entry: 'fixtures/typechecking.ts',
+			input: 'fixtures/typechecking.ts',
 			plugins: [
 				tslint({ formatter: createFormatter(result) })
 			]
@@ -79,7 +79,7 @@ describe('rollup-plugin-tslint', () => {
 	it('should be able to take an alternative configuration file', () => {
 		let result = {};
 		return rollup({
-			entry: 'fixtures/typechecking.ts',
+			input: 'fixtures/typechecking.ts',
 			plugins: [
 				tslint({ formatter: createFormatter(result), configuration: "alternative-tsconfig.json" })
 			]
@@ -93,7 +93,7 @@ describe('rollup-plugin-tslint', () => {
 	it('should be able to take an inline configuration', () => {
 		let result = {};
 		return rollup({
-			entry: 'fixtures/typechecking.ts',
+			input: 'fixtures/typechecking.ts',
 			plugins: [
 				tslint({ 
 					formatter: createFormatter(result), 

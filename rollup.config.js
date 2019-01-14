@@ -3,13 +3,8 @@ import buble from 'rollup-plugin-buble'
 const pkg = require('./package.json')
 
 export default {
-  entry: 'src/index.js',
-  plugins: [
-    buble()
-  ],
-  external: Object.keys(pkg.dependencies).concat(['path', 'fs']),
-  sourceMap: 'inline',
-  targets: [
+  input: 'src/index.js',
+  output: [
     {
       format: 'cjs',
       dest: pkg['main']
@@ -18,5 +13,10 @@ export default {
       format: 'es',
       dest: pkg['module']
     }
-  ]
+  ],
+  plugins: [
+    buble()
+  ],
+  external: Object.keys(pkg.dependencies).concat(['path', 'fs']),
+  sourceMap: 'inline'
 }
