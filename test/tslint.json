@@ -6,7 +6,11 @@
     "jsRules": {},
     "rules": {
         "no-unused-variable": false,
-        "restrict-plus-operands": true
+        "restrict-plus-operands": true,
+        "no-console": {
+            "severity": "warning",
+            "options": ["debug", "info", "log", "time", "timeEnd", "trace"]
+        }
     },
     "rulesDirectory": []
 }

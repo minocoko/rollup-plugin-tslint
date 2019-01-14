@@ -61,6 +61,41 @@ describe('rollup-plugin-tslint', () => {
 			assert.notEqual(err.toString().indexOf('Errors were found'), -1);
 		});
 	});
+
+	it('should fail with enabled throwOnError option', () => {
+		return rollup({
+			input: 'fixtures/warning.ts',
+			plugins: [
+				tslint({
+					throwOnWarning: true,
+					formatter: createFormatter()
+				})
+			]
+		}).then(() => {
+			assert.fail('should throw error');
+		}).catch(err => {
+			console.error(err);
+			assert.notEqual(err.toString().indexOf('Warnings were found'), -1);
+		});
+	});
+
+	it('should fail with enabled throwOnError option', () => {
+		return rollup({
+			input: 'fixtures/warning.ts',
+			plugins: [
+				tslint({
+					throwOnError: true,
+					throwOnWarning: true,
+					formatter: createFormatter()
+				})
+			]
+		}).then(() => {
+			assert.fail('should throw error');
+		}).catch(err => {
+			console.error(err);
+			assert.notEqual(err.toString().indexOf('Warnings or errors were found'), -1);
+		});
+	});
 	
 	it('should detect the violation with the type checker', () => {
 		let result = {};
