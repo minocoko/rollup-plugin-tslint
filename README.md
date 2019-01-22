@@ -1,3 +1,5 @@
+This project is ***deprecated***, please use [rollup-plugin-eslint] instead, due to typescript team decided using eslint, https://eslint.org/blog/2019/01/future-typescript-eslint
+
 # rollup-plugin-tslint 
 
 [![Build][travis-img]][travis]
